@@ -1,0 +1,42 @@
+Create player 1:
+
+places moles
+moles last 2 seconds.
+if mole is not whacked, give p1 point
+
+places cat with right click (disable?):
+placed with right click
+    if cat whacked p2 loses 3 points
+
+
+Create player 2:
+
+whacks moles.
+++ points for every whacked mole
+    Dont hit the cat! -3 points
+
+
+
+%%%%
+game board while true : theres 2 players, score is less than 25
+
+show opponents score
+access score and show p1score vs p2score
+
+countdown timer
+moles start appearing when 'Game starts!'    
+
+
+Server:
+needs to know who the whacker is and who the putter is  
+
+
+
+
+Technology needed:  socket io to connect two players
+
+    sockets to include other spectators?
+
+
+Ideas: Cursor is a hammer, or its an 'impeach peach'
+sounds when clicekd!

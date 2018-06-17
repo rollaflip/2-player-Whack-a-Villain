@@ -1,0 +1,143 @@
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#whack-a-mole {
+  background-color: darkolivegreen;
+  border: solid 10px #000;
+  padding: 20px;
+  width: 540px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hole {
+  background-image: url("images/hole.png");
+  background-size: contain;
+  width: 110px;
+  height: 123px;
+  margin: 5px;
+}
+
+.mole {
+  background-image: url("images/oTrump.png");
+  z-index: 2;
+  background-repeat:no-repeat;
+}
+
+.lucky{
+  background-image: url("images/neko.png");
+  z-index: 2;
+  background-repeat:no-repeat;
+}
+
+.bomb{
+  background-image: url("images/bomb.png");
+  z-index: 2;
+  background-repeat:no-repeat;
+}
+
+.poof {
+  background-image: url("images/Poof.png");
+  z-index: 2;
+  background-repeat:no-repeat;
+}
+.test {
+ 
+  cursor:url(http://www.sireasgallery.com/iconset/avengers/Thor_048x048_32.png), auto;
+}
+
+
+
+
+
+input {
+  outline: none;
+  font-size: 1.0rem;
+  padding: 0 5px;
+}
+
+button {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  padding: 3px 15px;
+  color: white;
+  line-height: 25px;
+  background-color: #00bcd4;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.12) 0 1px 6px, rgba(0, 0, 0, 0.12) 0 1px 4px;
+  transition: all 150ms ease-in;
+  outline: none;
+}
+
+button:hover {
+    background-color: #79d7e4;
+}
+
+button.turn {
+  color: rgb(255, 64, 129);
+  background-color: white;
+  box-shadow:none;
+}
+
+button.turn:hover {
+  background-color: #eaeaea;
+}
+
+.rps-wrapper {
+  background-color: rgb(255, 255, 255);
+  width: 400px;
+  height: 300px;
+  max-height: 300px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid lightgrey;
+}
+
+#events {
+  flex-grow: 1;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid lightgrey;
+  overflow-y: scroll;
+}
+
+#events li {
+  padding: 10px 10px 10px 10px;
+}
+
+.chat-wrapper {
+  padding: 10px;
+}
+
+.chat-wrapper form {
+  display: flex;
+}
+
+.chat-wrapper form input {
+  font-size: 1.0rem;
+  margin: 0 10px 0 0;
+  padding: 0 5px;
+  flex-grow: 1;
+}
+
+.chat-wrapper form button {
+  width: 80px;
+}
+
+.button-wrapper {
+  display: flex;
+  padding: 10px 50px;
+  justify-content: space-evenly;
+} 
