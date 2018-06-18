@@ -3954,11 +3954,6 @@ module.exports = function(obj, fn){
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// const socketio = require('socket.io');
-// const newGame = require('server.js')
-// console.log(newGame)
-var socket = io();
-
 var client = __webpack_require__(25);
 let sock = client.connect('http://localhost:3000', {
   reconnect: false
@@ -3977,7 +3972,7 @@ form.addEventListener('submit', function (e) {
   let input = document.getElementById('chat-input');
   let value = input.value;
   input.value = '';
-  socket.emit('msg', value);
+  sock.emit('msg', value);
   e.preventDefault();
   // onMessage(value);
 });
@@ -4005,7 +4000,7 @@ document.getElementById('whack-a-mole').addEventListener('click', event => {
     event.target.classList.remove('mole');
     event.target.classList.toggle('poof');
     sock.emit('scoreUpdate', {
-      playerId: socket.id,
+      playerId: sock.id,
       num: 1
     });
 

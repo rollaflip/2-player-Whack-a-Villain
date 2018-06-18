@@ -12,29 +12,36 @@ const server = app.listen(3000, function() {
 });
 const io = socketio(server);
 
-// var server = require('http').Server(app)
-// var io = require('socket.io').listen(server)
-// server.listen(8080, function(){
-//   console.log(`listening on http://localhost:${server.address().port}`)
-// })
-
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
+
+// const http = require('http');
+// const express = require('express');
+// const socketio = require('socket.io');
+// const Game = require('./Server/game')
+// const app = express();
+// const clientPath = `${__dirname}/public`
+// app.use(express.static(clientPath))
+// const server = http.createServer(app)
+// const io = socketio(server)
+// server.listen(8080, () => {
+//   console.log('RPS started on 8080');
+// });
+
 let waitingPlayer = null
 
 ///Chat room
 
-let newGame;
 io.on('connection', socket => {
   console.log('a new client has connected: ' + socket.id);
-
+  
   socket.on('disconnect', function(reason) {console.log(':( disconnected', reason)});
-
+  
+  let newGame;
   if (waitingPlayer){
     //start game
     newGame = new Game(waitingPlayer, socket)

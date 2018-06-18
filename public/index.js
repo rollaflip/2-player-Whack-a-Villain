@@ -1,8 +1,3 @@
-// const socketio = require('socket.io');
-// const newGame = require('server.js')
-// console.log(newGame)
-var socket = io();
-
 var client = require('socket.io-client');
 let sock = client.connect(
   'http://localhost:3000',
@@ -24,7 +19,7 @@ form.addEventListener('submit', function(e) {
   let input = document.getElementById('chat-input');
   let value = input.value;
   input.value = '';
-  socket.emit('msg', value);
+  sock.emit('msg', value);
   e.preventDefault();
   // onMessage(value);
 });
@@ -56,7 +51,6 @@ setInterval(() => {
   datHole[currHole].classList.toggle(spriteArr[randomSprite]);
 }, 300);
 
-
 ////these score adjustments below need to be send to scoreboard on newGame
 document.getElementById('whack-a-mole').addEventListener('click', event => {
   if (event.target.matches('.mole')) {
@@ -64,14 +58,13 @@ document.getElementById('whack-a-mole').addEventListener('click', event => {
     event.target.classList.remove('mole');
     event.target.classList.toggle('poof');
     sock.emit('scoreUpdate', {
-      playerId: socket.id,
+      playerId: sock.id,
       num: 1
-    })
+    });
 
     setTimeout(() => {
       event.target.classList.remove('poof');
     }, 300);
-    
   }
 
   if (event.target.matches('.bomb')) {
