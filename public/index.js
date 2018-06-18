@@ -1,5 +1,6 @@
 // const socketio = require('socket.io');
-
+// const newGame = require('server.js')
+// console.log(newGame)
 var socket = io();
 
 var client = require('socket.io-client');
@@ -31,6 +32,7 @@ form.addEventListener('submit', function(e) {
 sock.on('msg', onMessage);
 /////// Single player Game
 let score = 0;
+// let player2Score = newGame.scoreBoard.p2Score
 
 let datHole = document.getElementsByClassName('hole');
 let spriteArr = [
@@ -54,18 +56,26 @@ setInterval(() => {
   datHole[currHole].classList.toggle(spriteArr[randomSprite]);
 }, 300);
 
+
+////these score adjustments below need to be send to scoreboard on newGame
 document.getElementById('whack-a-mole').addEventListener('click', event => {
   if (event.target.matches('.mole')) {
     score++;
     event.target.classList.remove('mole');
     event.target.classList.toggle('poof');
+    sock.emit('scoreUpdate', {
+      playerId: socket.id,
+      num: 1
+    })
+
     setTimeout(() => {
       event.target.classList.remove('poof');
     }, 300);
+    
   }
 
   if (event.target.matches('.bomb')) {
-    score -= 5;
+    score -= 10;
     event.target.classList.remove('bomb');
     event.target.classList.toggle('poof');
     setTimeout(() => {
@@ -83,4 +93,5 @@ document.getElementById('whack-a-mole').addEventListener('click', event => {
   }
 
   document.getElementById('score').textContent = score;
+  // document.getElementById('p2Score').textContent = player2Score;
 });

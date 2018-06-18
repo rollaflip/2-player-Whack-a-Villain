@@ -1,6 +1,10 @@
+// import React, { Component } from 'react'
+
 class whackAMole {
   constructor(p1, p2) {
+    this.gameStarted = true
     this.players = [p1, p2];
+
     this.scoreBoard = {
         p1Score: 0,
         p2Score: 0
