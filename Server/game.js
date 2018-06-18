@@ -23,10 +23,10 @@ class whackAMole {
     }
 
     _checkGameOver(){
-        if (this.scoreBoard.p1Score === 25){
+        if (this.scoreBoard.p1Score >= 100){
             this.players.forEach(player => player.emit('msg', 'p1 Wins!' ));
         }
-        if (this.scoreBoard.p2Score === 25){
+        if (this.scoreBoard.p2Score >= 100){
             this.players.forEach(player => player.emit('msg', 'p2 Wins!' ));
         }
     }

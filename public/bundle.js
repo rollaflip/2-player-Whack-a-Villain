@@ -3954,8 +3954,6 @@ module.exports = function(obj, fn){
 /* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
-// let sock = io()
-
 var client = __webpack_require__(25);
 let sock = client.connect('http://localhost:3000', {
   reconnect: false
@@ -3990,7 +3988,7 @@ sock.on('p2CurrScore', num => {
 });
 
 sock.on('p1CurrScore', num => {
-  player2Score = num;
+  player1Score = num;
 });
 
 let datHole = document.getElementsByClassName('hole');

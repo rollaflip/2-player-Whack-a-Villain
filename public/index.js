@@ -1,5 +1,3 @@
-// let sock = io()
-
 var client = require('socket.io-client');
 let sock = client.connect(
   'http://localhost:3000',
@@ -37,7 +35,7 @@ sock.on('p2CurrScore', num => {
 })
 
 sock.on('p1CurrScore', num => {
-  player2Score = num
+  player1Score = num
 })
 
 let datHole = document.getElementsByClassName('hole');
