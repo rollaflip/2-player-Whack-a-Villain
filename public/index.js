@@ -1,3 +1,5 @@
+// let sock = io()
+
 var client = require('socket.io-client');
 let sock = client.connect(
   'http://localhost:3000',
@@ -21,13 +23,22 @@ form.addEventListener('submit', function(e) {
   input.value = '';
   sock.emit('msg', value);
   e.preventDefault();
-  // onMessage(value);
 });
 
 sock.on('msg', onMessage);
 /////// Single player Game
 let score = 0;
-// let player2Score = newGame.scoreBoard.p2Score
+
+let player2Score = 0
+let player1Score = 0
+
+sock.on('p2CurrScore', num => {
+  player2Score = num
+})
+
+sock.on('p1CurrScore', num => {
+  player2Score = num
+})
 
 let datHole = document.getElementsByClassName('hole');
 let spriteArr = [
@@ -54,7 +65,7 @@ setInterval(() => {
 ////these score adjustments below need to be send to scoreboard on newGame
 document.getElementById('whack-a-mole').addEventListener('click', event => {
   if (event.target.matches('.mole')) {
-    score++;
+    // score++;
     event.target.classList.remove('mole');
     event.target.classList.toggle('poof');
     sock.emit('scoreUpdate', {
@@ -68,23 +79,31 @@ document.getElementById('whack-a-mole').addEventListener('click', event => {
   }
 
   if (event.target.matches('.bomb')) {
-    score -= 10;
+    // score -= 10;
     event.target.classList.remove('bomb');
     event.target.classList.toggle('poof');
+    sock.emit('scoreUpdate', {
+      playerId: sock.id,
+      num: -10
+    })
     setTimeout(() => {
       event.target.classList.remove('poof');
     }, 300);
   }
 
   if (event.target.matches('.lucky')) {
-    score += 5;
+    // score += 5;
     event.target.classList.remove('lucky');
     event.target.classList.toggle('poof');
+    sock.emit('scoreUpdate', {
+      playerId: sock.id,
+      num: 5
+    })
     setTimeout(() => {
       event.target.classList.remove('poof');
     }, 300);
   }
 
-  document.getElementById('score').textContent = score;
-  // document.getElementById('p2Score').textContent = player2Score;
+  document.getElementById('p1Score').textContent = player1Score;
+  document.getElementById('p2Score').textContent = player2Score;
 });

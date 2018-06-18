@@ -36,12 +36,12 @@ let waitingPlayer = null
 
 ///Chat room
 
+let newGame;
 io.on('connection', socket => {
   console.log('a new client has connected: ' + socket.id);
   
   socket.on('disconnect', function(reason) {console.log(':( disconnected', reason)});
   
-  let newGame;
   if (waitingPlayer){
     //start game
     newGame = new Game(waitingPlayer, socket)
@@ -63,17 +63,20 @@ io.on('connection', socket => {
     let p1BoardScore = newGame.scoreBoard.p1Score
     let p2BoardScore = newGame.scoreBoard.p2Score
   
+    //if player 1 whacks
 if (newGame.players[0].id === scoreVal.playerId) {
   newGame.scoreBoard.p1Score = scoreAdj(p1BoardScore, scoreVal.num)
+  socket.emit('p1CurrScore', p1BoardScore)
 } 
-
+  //if player 2 whacks
 if (newGame.players[1].id === scoreVal.playerId) {
   newGame.scoreBoard.p2Score = scoreAdj(p2BoardScore, scoreVal.num)
+  socket.emit('p2CurrScore', p2BoardScore)
 } 
 
     
     // console.log('this players id: ', newGame.players[1].id)
-    console.log('pid from client ', scoreVal.playerId)
+    console.log('whacker pID: ', scoreVal.playerId)
     console.log('p1: ', p1BoardScore, 'p2: ', p2BoardScore)
   })
 });

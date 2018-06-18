@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html  lang="en">
 <head>
@@ -15,29 +13,57 @@
   <!-- <script src="../Server/game.js" defer></script> -->
   <script src="/socket.io/socket.io.js"></script>
 
-
   <h1>Welcome to Whack a Trump</h1>
 </head>
 
 <div class="wrapper">
-        <div class="main">
+        
             <ul id="chat"> 
                 <li>Talk Trash Here</li>
             </ul>
-        </div>
-        <div class="chat-controls">
+            <div class="controls"></div>
+        
+        <div class="chat-wrapper">
             <form id="chat-form">
-                <input id="chat-input" />
+                <input id="chat-input" autocomplete="off" title="chat" />
                 <button>Talk Trash</button>
             </form>
         </div>
+        </div>
 </div>
 
+<!-- 
+<div class="rps-wrapper">
+        <ul id="events"></ul>
+        
+        <div class="controls">
+          <div class="chat-wrapper">
+            <form id="chat-form">
+              <input id="chat" autocomplete="off" title="chat"/>
+              <button id="say">Say</button>
+            </form>
+          </div>
+  
+    
+        </div>
+      </div> -->
+
+
 <body > 
-    Score
-  <h1 id="score">Score: 0</h1>
-    p2 Score
-  <h1 id="p2Score">Score: 0</h1>
+    <table>
+
+        <tr>
+                <!-- FOR SOME REASON P1/P2 FLIPPED. HACKED FOR NOW -->
+            <td><span><h4>p1 Score</h4></span></td>
+            <td><span><h1 id="p2Score">0</h1></span></td>
+            <td><span><h4>p2 Score</h4></span></td>
+            <td><span><h1 id="p1Score">0</h1></span></td>
+        </tr>
+
+    </table>
+
+   
+
   <script async defer src="/bundle.js"></script>    
   <div class="test"id="whack-a-mole">
     <div class="hole"></div>
